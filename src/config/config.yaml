@@ -1,0 +1,9 @@
+artifacts_root:
+  artifacts
+
+data ingestion:
+   root_dir:artifacts/data_ingestion
+   source_URL: https://github.com/Deepuhemant/DataScience_Complete_ML_Pipeline/blob/main/winequality-data.zip
+   local_data_file : artifacts/data_ingestion/data.zip
+   unzip_dir : artifacts/data_ingestion
+   
