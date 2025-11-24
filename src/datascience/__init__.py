@@ -8,8 +8,9 @@ log_dir = "logs"
 log_filepath = os.path.join(log_dir, "logging.log")
 os.makedirs(log_dir, exist_ok=True)
 
-# Force UTF-8 encoding on stdout
-sys.stdout.reconfigure(encoding='utf-8')
+# Force UTF-8 encoding on stdout (skip in Jupyter notebooks)
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
 
 logging.basicConfig(
     level=logging.INFO,

@@ -6,7 +6,7 @@ This project is complete ml pipeline from data ingestion to model deployment
 
 1 : Data Ingestion
 2 : Data validation 
-3 : Data Transformation
+3 : Data Transformation -- feature engineering, eda, data preprocessing
 4 : Model Trainer
 5 : Model Evaluation
 
