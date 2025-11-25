@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/deepu/OneDrive/Desktop/ML_Pipeline/mlruns/0/72c34849a41e4b7e90f1327c19962366/artifacts
+end_time: 1764089053503
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 72c34849a41e4b7e90f1327c19962366
+run_name: colorful-worm-643
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764089053351
+status: 3
+tags: []
+user_id: DeepuHemant

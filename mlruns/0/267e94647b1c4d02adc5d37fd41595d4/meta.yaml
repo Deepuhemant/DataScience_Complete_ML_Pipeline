@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/deepu/OneDrive/Desktop/ML_Pipeline/mlruns/0/267e94647b1c4d02adc5d37fd41595d4/artifacts
+end_time: 1764089340824
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 267e94647b1c4d02adc5d37fd41595d4
+run_name: abundant-goose-541
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764089340700
+status: 3
+tags: []
+user_id: DeepuHemant
