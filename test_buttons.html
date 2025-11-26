@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 50px;
+            background: #f0f0f0;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            min-width: 180px;
+        }
+        
+        .btn-predict {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-reset {
+            background: #f44336;
+            color: white;
+        }
+        
+        .btn-example {
+            background: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Button Alignment Test</h1>
+    <p>All three buttons should be the same width and centered</p>
+    
+    <div class="button-group">
+        <button class="btn btn-predict">
+            🎯 Predict Quality
+        </button>
+        <button class="btn btn-reset">
+            🔄 Reset Form
+        </button>
+        <button class="btn btn-example">
+            ✨ Load Example
+        </button>
+    </div>
+    
+    <h3 style="margin-top: 50px;">Expected Result:</h3>
+    <p>✅ All buttons should be 180px wide (minimum)</p>
+    <p>✅ All buttons should be centered</p>
+    <p>✅ All buttons should be in a horizontal row</p>
+</body>
+</html>

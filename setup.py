@@ -4,7 +4,7 @@ setup(
     name="datascience",
     version="0.0.1",
     author="deepu",
-    author_email="your.email@example.com",
+    author_email="deepuhemant18@gmail.com.com",
     packages=find_packages(),
     install_requires=[
         'pandas',

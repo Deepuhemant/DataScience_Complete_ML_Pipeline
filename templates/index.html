@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Quality Prediction - ML Pipeline</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="wine-icon">🍷</span>
+                <h1>Wine Quality Predictor</h1>
+            </div>
+            <p class="subtitle">Train your model and predict wine quality using Machine Learning</p>
+        </header>
+
+        <!-- Training Section -->
+        <section class="training-section">
+            <div class="training-card">
+                <h2 class="section-title">
+                    <span class="title-icon">🤖</span>
+                    Step 1: Train Your Model
+                </h2>
+                <p class="training-description">
+                    Train the machine learning model on wine quality dataset. This may take a few minutes.
+                </p>
+                
+                <button type="button" class="btn btn-train" id="trainButton" onclick="trainModel()">
+                    <span class="btn-icon">🚀</span>
+                    Start Training
+                </button>
+                
+                <!-- Training Status -->
+                <div class="training-status" id="trainingStatus" style="display: none;">
+                    <div class="status-content">
+                        <div class="loader"></div>
+                        <p id="statusMessage">Training in progress...</p>
+                        <small id="statusDetails">Please wait, this may take a few minutes</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content - Prediction Form -->
+        <main class="main-content">
+            <div class="form-container">
+                <h2 class="section-title">
+                    <span class="title-icon">🎯</span>
+                    Step 2: Predict Wine Quality
+                </h2>
+                <p class="form-description">Enter the wine's chemical properties below to predict its quality score</p>
+                
+                <form id="predictionForm" method="POST" action="/predict">
+                    <div class="form-grid">
+                        <!-- Row 1 -->
+                        <div class="form-group">
+                            <label for="fixed_acidity">
+                                <span class="label-icon">⚗️</span>
+                                Fixed Acidity
+                            </label>
+                            <input type="number" step="0.01" name="fixed_acidity" id="fixed_acidity" 
+                                   placeholder="e.g., 7.4" required>
+                            <small>Range: 4.6 - 15.9</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="volatile_acidity">
+                                <span class="label-icon">💧</span>
+                                Volatile Acidity
+                            </label>
+                            <input type="number" step="0.01" name="volatile_acidity" id="volatile_acidity" 
+                                   placeholder="e.g., 0.70" required>
+                            <small>Range: 0.12 - 1.58</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="citric_acid">
+                                <span class="label-icon">🍋</span>
+                                Citric Acid
+                            </label>
+                            <input type="number" step="0.01" name="citric_acid" id="citric_acid" 
+                                   placeholder="e.g., 0.00" required>
+                            <small>Range: 0.00 - 1.00</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="residual_sugar">
+                                <span class="label-icon">🍬</span>
+                                Residual Sugar
+                            </label>
+                            <input type="number" step="0.01" name="residual_sugar" id="residual_sugar" 
+                                   placeholder="e.g., 1.9" required>
+                            <small>Range: 0.9 - 15.5</small>
+                        </div>
+
+                        <!-- Row 2 -->
+                        <div class="form-group">
+                            <label for="chlorides">
+                                <span class="label-icon">🧂</span>
+                                Chlorides
+                            </label>
+                            <input type="number" step="0.001" name="chlorides" id="chlorides" 
+                                   placeholder="e.g., 0.076" required>
+                            <small>Range: 0.012 - 0.611</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="free_sulfur_dioxide">
+                                <span class="label-icon">☁️</span>
+                                Free Sulfur Dioxide
+                            </label>
+                            <input type="number" step="0.1" name="free_sulfur_dioxide" id="free_sulfur_dioxide" 
+                                   placeholder="e.g., 11.0" required>
+                            <small>Range: 1.0 - 72.0</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="total_sulfur_dioxide">
+                                <span class="label-icon">☁️</span>
+                                Total Sulfur Dioxide
+                            </label>
+                            <input type="number" step="0.1" name="total_sulfur_dioxide" id="total_sulfur_dioxide" 
+                                   placeholder="e.g., 34.0" required>
+                            <small>Range: 6.0 - 289.0</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="density">
+                                <span class="label-icon">📊</span>
+                                Density
+                            </label>
+                            <input type="number" step="0.0001" name="density" id="density" 
+                                   placeholder="e.g., 0.9978" required>
+                            <small>Range: 0.990 - 1.004</small>
+                        </div>
+
+                        <!-- Row 3 -->
+                        <div class="form-group">
+                            <label for="pH">
+                                <span class="label-icon">🔬</span>
+                                pH
+                            </label>
+                            <input type="number" step="0.01" name="pH" id="pH" 
+                                   placeholder="e.g., 3.51" required>
+                            <small>Range: 2.74 - 4.01</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sulphates">
+                                <span class="label-icon">⚗️</span>
+                                Sulphates
+                            </label>
+                            <input type="number" step="0.01" name="sulphates" id="sulphates" 
+                                   placeholder="e.g., 0.56" required>
+                            <small>Range: 0.33 - 2.00</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="alcohol">
+                                <span class="label-icon">🍷</span>
+                                Alcohol (%)
+                            </label>
+                            <input type="number" step="0.1" name="alcohol" id="alcohol" 
+                                   placeholder="e.g., 9.4" required>
+                            <small>Range: 8.4 - 14.9</small>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-predict">
+                            <span class="btn-icon">🎯</span>
+                            Predict Quality
+                        </button>
+                        <button type="button" class="btn btn-reset" onclick="resetForm()">
+                            <span class="btn-icon">🔄</span>
+                            Reset Form
+                        </button>
+                        <button type="button" class="btn btn-example" onclick="fillExample()">
+                            <span class="btn-icon">✨</span>
+                            Load Example
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Prediction Result -->
+                {% if prediction %}
+                <div class="result-container" id="resultContainer">
+                    <h3>🎉 Prediction Result</h3>
+                    <div class="result-card">
+                        <div class="quality-score">
+                            <span class="score-label">Wine Quality Score</span>
+                            <span class="score-value">{{ prediction }}</span>
+                            <span class="score-max">/ 10</span>
+                        </div>
+                        <div class="quality-rating">
+                            <div class="stars">
+                                {% for i in range(prediction|int) %}
+                                    ⭐
+                                {% endfor %}
+                            </div>
+                            <p class="rating-text">
+                                {% if prediction >= 7 %}
+                                    Excellent Quality Wine! 🏆
+                                {% elif prediction >= 6 %}
+                                    Good Quality Wine 👍
+                                {% elif prediction >= 5 %}
+                                    Average Quality Wine ✓
+                                {% else %}
+                                    Below Average Quality ⚠️
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if error %}
+                <div class="error-container">
+                    <p class="error-message">❌ {{ error }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>🤖 Powered by Machine Learning | Built with ❤️ using Flask & scikit-learn</p>
+            <p><small>💡 Tip: Train the model first, then make predictions!</small></p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
